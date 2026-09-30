@@ -179,14 +179,14 @@
   "home_name": "Trixino Casino",
   "subdomains": null,
   "accent_color": "#334155",
-  "main_background": "#090b0f",
-  "secondary_background": "#13161e",
-  "button_background": "#d8a246",
-  "button_text_color": "#13161e",
+  "main_background": "#0b0a19",
+  "secondary_background": "#0e0b28",
+  "button_background": "#a246f1",
+  "button_text_color": "#fafff0",
   "text_color": "#ffffff",
-  "color_highlight_text": "#d8a246",
-  "color_main_btn_text": "#13161e",
-  "cta_background": "#d8a246",
+  "color_highlight_text": "#a246f1",
+  "color_main_btn_text": "#fafff0",
+  "cta_background": "#a246f1",
   "logo": {
     "url": "/uploads/3f394460d918b202b87a218ff6aee83e.webp",
     "alt": "trixino casino logo"
@@ -368,9 +368,9 @@
       "question": "Which payment methods are available at Trixino?"
     }
   ],
-  "_generated_at": "2026-09-30T08:37:08.999Z",
+  "_generated_at": "2026-09-30T08:38:52.500Z",
   "_version": "1.0.0",
   "content_alt": "rixino casino registration form",
-  "_last_deploy": "2026-09-30T08:37:09.596Z",
-  "_deploy_trigger": "arl4zr"
+  "_last_deploy": "2026-09-30T08:38:53.105Z",
+  "_deploy_trigger": "jvi2lj"
 }
