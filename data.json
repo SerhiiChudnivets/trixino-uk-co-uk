@@ -172,7 +172,7 @@
   "faq_title": "FAQ",
   "login_text": "Login",
   "register_text": "Sign Up",
-  "slots_title": "Dieselwin Casino Slots",
+  "slots_title": "Trixino Casino Slots",
   "bonus_title": "Bonuses and Promotions ",
   "get_bonus_btn_text": "Play Now",
   "redirect_link": "/play/",
@@ -368,9 +368,9 @@
       "question": "Which payment methods are available at Trixino?"
     }
   ],
-  "_generated_at": "2026-09-30T08:46:35.182Z",
+  "_generated_at": "2026-09-30T08:50:02.360Z",
   "_version": "1.0.0",
   "content_alt": "rixino casino registration form",
-  "_last_deploy": "2026-09-30T08:46:35.915Z",
-  "_deploy_trigger": "qbnldi"
+  "_last_deploy": "2026-09-30T08:50:02.960Z",
+  "_deploy_trigger": "8bi9dr"
 }
