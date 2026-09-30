@@ -5,7 +5,7 @@
   "url": "trixino-uk.co.uk",
   "template": "tupchiy",
   "language_code": "en-IE",
-  "allow_indexing": false,
+  "allow_indexing": true,
   "redirect_404s_to_homepage": true,
   "use_www_version": false,
   "breadcrumbs": true,
@@ -368,9 +368,9 @@
       "question": "Which payment methods are available at Trixino?"
     }
   ],
-  "_generated_at": "2026-09-30T10:33:16.675Z",
+  "_generated_at": "2026-09-30T10:38:35.386Z",
   "_version": "1.0.0",
   "content_alt": "rixino casino registration form",
-  "_last_deploy": "2026-09-30T10:33:17.293Z",
-  "_deploy_trigger": "macjbj"
+  "_last_deploy": "2026-09-30T10:38:35.968Z",
+  "_deploy_trigger": "1agy8h"
 }
