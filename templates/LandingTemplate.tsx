@@ -62,6 +62,7 @@ interface PageData {
   features_list?: string
   footer_text?: string
   popup_text?: string
+  popupText?: string
   faq_title?:string
   login_text?: string
   register_text?: string
@@ -76,6 +77,7 @@ interface PageData {
   secondary_background?: string
   button_background?: string
   button_text?: string
+  button_text_color?: string
   text_color?: string
   color_highlight_text?: string
   color_main_btn_text?: string
@@ -134,6 +136,7 @@ interface SiteData {
   features_list?: string
   footer_text?: string
   popup_text?: string
+  popupText?: string
   faq_title?:string
   login_text?: string
   register_text?: string
@@ -148,6 +151,7 @@ interface SiteData {
   secondary_background?: string
   button_background?: string
   button_text?: string
+  button_text_color?: string
   text_color?: string
   color_highlight_text?: string
   color_main_btn_text?: string
@@ -273,7 +277,7 @@ const styles = `
 
   .btn-primary {
     background: var(--button-bg);
-    color: var(--primary-foreground);
+    color: var(--button-text-color);
   }
 
   .btn-primary:hover {
@@ -1368,11 +1372,13 @@ export default function LandingTemplate({ page, site }: { page: PageData; site: 
         const metaName = typeof attrs.name === 'string' ? attrs.name.toLowerCase() : ''
         const metaProperty = typeof attrs.property === 'string' ? attrs.property.toLowerCase() : ''
         const metaHttpEquiv = typeof attrs.httpEquiv === 'string' ? attrs.httpEquiv.toLowerCase() : ''
+        const metaContent = typeof attrs.content === 'string' ? attrs.content.toLowerCase() : ''
         const metaKey = metaName || metaProperty || metaHttpEquiv || (attrs.charSet ? 'charset' : '')
+        const metaDedupKey = metaKey ? `meta:${metaKey}:${metaContent}` : `meta:${key}`
         if (metaName === 'description') continue
-        if (metaKey && seenHeadTags.has(`meta:${metaKey}`)) continue
-        if (metaKey) seenHeadTags.add(`meta:${metaKey}`)
-        tags.push(<meta key={metaKey ? `meta:${metaKey}` : key} {...attrs} />)
+        if (seenHeadTags.has(metaDedupKey)) continue
+        seenHeadTags.add(metaDedupKey)
+        tags.push(<meta key={metaDedupKey} {...attrs} />)
       }
 
       if (tagName === 'link') {
@@ -1404,18 +1410,22 @@ export default function LandingTemplate({ page, site }: { page: PageData; site: 
   const buttonBackground = data.button_background || '#f59e0b' // default amber
   const ctaBackground = data.cta_background || buttonBackground
   const buttonText = data.button_text || '#1a202c' // default dark
+  const buttonTextColor = data.button_text_color || data.button_text || '#1a202c'
   const textColor = data.text_color || '#f7fafc' // default light
   const colorHighlightText = data.color_highlight_text || '#f59e0b'
   const colorMainBtnText = data.color_main_btn_text || 'fff'
 
   const heroTitle = page.heroTitle || page.hero_title || data.heroTitle || data.hero_title || 'Get 200% Bonus'
   const heroSubtitle = page.heroSubtitle || page.hero_subtitle || data.heroSubtitle || data.hero_subtitle || 'Up to €1,000 + 100 Free Spins'
-  const heroBadge = page.hero_badge || data.hero_badge || '🎰 Welcome Bonus'
+  const pageHeroBadge = Object.prototype.hasOwnProperty.call(page, 'heroBadge') ? page.heroBadge : page.hero_badge
+  const heroBadge = typeof pageHeroBadge === 'string' ? pageHeroBadge.trim() : ''
   const ctaText = data.cta_text || 'Play Now'
   const [showPopup, setShowPopup] = useState(false)
   const [isPopupDismissed, setIsPopupDismissed] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const popupText = data.popup_text || '🎁 Welcome Bonus: 100% up to $500 + 200 Free Spins!'
+  const pagePopupText = [page.popupText, page.popup_text].find((value) => typeof value === 'string' && value.trim())
+  const dataPopupText = [data.popupText, data.popup_text].find((value) => typeof value === 'string' && value.trim())
+  const popupText = pagePopupText || dataPopupText || '🎁 Welcome Bonus: 100% up to $500 + 200 Free Spins!'
   // New variable
   const normalizeUrl = (url?: string) => {
     if (!url) return '#'
@@ -1467,6 +1477,7 @@ export default function LandingTemplate({ page, site }: { page: PageData; site: 
       --button-bg: ${buttonBackground};
       --cta-bg: ${ctaBackground};
       --button-text: ${buttonText};
+      --button-text-color: ${buttonTextColor};
       --color-main-btn: ${colorMainBtnText};
     }
   `;
@@ -1645,7 +1656,7 @@ export default function LandingTemplate({ page, site }: { page: PageData; site: 
         <div className="hero-overlay"></div>
         <div className="container">
           <div className="hero-content">
-            <span className="hero-badge">{heroBadge}</span>
+            {heroBadge && <span className="hero-badge">{heroBadge}</span>}
             <div className="hero-background">
               <h1 className="hero-title">
                 <span className="hero-accent">{heroTitle}</span>
